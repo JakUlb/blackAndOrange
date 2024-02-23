@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://cg8amqe3eu7rf"]
 
-[ext_resource type="Script" path="res://Main.gd" id="1_s46nk"]
-[ext_resource type="PackedScene" uid="uid://if1m7b0ycyf8" path="res://hud.tscn" id="2_lv7f2"]
-[ext_resource type="PackedScene" uid="uid://dlv5jefm4l7bk" path="res://world.tscn" id="3_1uctc"]
-[ext_resource type="PackedScene" uid="uid://cevu0ipdrtd22" path="res://cat.tscn" id="4_ey3wn"]
-[ext_resource type="PackedScene" uid="uid://c726l76pt4dut" path="res://enemy.tscn" id="4_lp5rt"]
-[ext_resource type="PackedScene" uid="uid://tc3y3rliegfx" path="res://PowerUpStation.tscn" id="4_o4nd4"]
+[ext_resource type="Script" path="res://scripts/Main.gd" id="1_s46nk"]
+[ext_resource type="PackedScene" uid="uid://if1m7b0ycyf8" path="res://scenes/hud.tscn" id="2_lv7f2"]
+[ext_resource type="PackedScene" uid="uid://dlv5jefm4l7bk" path="res://scenes/world.tscn" id="3_1uctc"]
+[ext_resource type="PackedScene" uid="uid://cevu0ipdrtd22" path="res://scenes/cat.tscn" id="4_ey3wn"]
+[ext_resource type="PackedScene" uid="uid://c726l76pt4dut" path="res://scenes/enemy.tscn" id="4_lp5rt"]
+[ext_resource type="PackedScene" uid="uid://tc3y3rliegfx" path="res://scenes/PowerUpStation.tscn" id="4_o4nd4"]
 [ext_resource type="AudioStream" uid="uid://c3i28g66e3r8b" path="res://assets/sounds/timer.wav" id="7_xrup6"]
 
 [node name="Main" type="Node"]

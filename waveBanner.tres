@@ -1,7 +1,0 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://brdiuuv2hbcs4"]
-
-[ext_resource type="FontFile" uid="uid://dcfsmm7ran6al" path="res://assets/fonts/Metropolis 1920 Regular.otf" id="1_6qlwj"]
-
-[resource]
-Label/font_sizes/font_size = 300
-Label/fonts/font = ExtResource("1_6qlwj")

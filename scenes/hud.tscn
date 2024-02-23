@@ -1,0 +1,107 @@
+[gd_scene load_steps=7 format=3 uid="uid://if1m7b0ycyf8"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_u3hsx"]
+[ext_resource type="Theme" uid="uid://djhl7imungmc6" path="res://themes/healthbar.tres" id="2_urlpy"]
+[ext_resource type="Theme" uid="uid://brdiuuv2hbcs4" path="res://themes/waveBanner.tres" id="3_7mpn5"]
+[ext_resource type="Texture2D" uid="uid://du164lh1eix4k" path="res://assets/controls/PixelArt_Base_NoBG_00083_.png" id="4_am2ih"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://joystick/virtual_joystick.tscn" id="5_jigro"]
+[ext_resource type="AudioStream" uid="uid://cts8h0h4q6to8" path="res://assets/sounds/thunderStorm.wav" id="6_wb5ow"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_u3hsx")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
+offset_right = 397.0
+offset_bottom = 27.0
+theme = ExtResource("2_urlpy")
+show_percentage = false
+
+[node name="HealthInfo" type="Label" parent="CanvasLayer"]
+offset_left = 399.0
+offset_top = 2.0
+offset_right = 439.0
+offset_bottom = 25.0
+text = "100/100"
+
+[node name="KillCount" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+
+[node name="WaveCount" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+
+[node name="WaveBanner" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_7mpn5")
+
+[node name="CountDown" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -50.0
+offset_right = 20.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_7mpn5")
+
+[node name="MarginContainerAttack" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 340
+theme_override_constants/margin_bottom = 220
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="CanvasLayer/MarginContainerAttack"]
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("4_am2ih")
+action = "attack"
+
+[node name="Virtual Joystick" parent="CanvasLayer" instance=ExtResource("5_jigro")]
+offset_left = 108.0
+offset_top = -340.0
+offset_right = 408.0
+offset_bottom = -40.0
+
+[node name="AudioStreamPlayerStartSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_wb5ow")
+
+[connection signal="finished" from="AudioStreamPlayerStartSound" to="." method="_on_audio_stream_player_start_sound_finished"]
