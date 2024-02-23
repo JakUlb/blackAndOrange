@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3s0g8dgvhidr"]
+
+[ext_resource type="Texture2D" uid="uid://bjkj67gme2ke4" path="res://assets/Parallax/sky.png" id="1_b3ipo"]
+[ext_resource type="Script" path="res://parallax_background.gd" id="1_k7blx"]
+[ext_resource type="Texture2D" uid="uid://hrv70k6sqkyw" path="res://assets/Parallax/clouds_refit.png" id="3_en7aa"]
+[ext_resource type="Texture2D" uid="uid://e3j53pwohlct" path="res://assets/Parallax/mountains.png" id="4_2p0ag"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+script = ExtResource("1_k7blx")
+
+[node name="Sky" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Sky" type="Sprite2D" parent="Sky"]
+position = Vector2(1086, 361)
+scale = Vector2(0.744951, 0.700536)
+texture = ExtResource("1_b3ipo")
+
+[node name="Sky2" type="Sprite2D" parent="Sky"]
+position = Vector2(373, 360.77)
+scale = Vector2(0.724609, 0.702676)
+texture = ExtResource("1_b3ipo")
+
+[node name="Sky3" type="Sprite2D" parent="Sky"]
+position = Vector2(1554, 361)
+scale = Vector2(0.724609, 0.702676)
+texture = ExtResource("1_b3ipo")
+
+[node name="Clouds" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1920, 0)
+
+[node name="CloudsRefit" type="Sprite2D" parent="Clouds"]
+position = Vector2(355, 362)
+scale = Vector2(0.707031, 0.707031)
+texture = ExtResource("3_en7aa")
+
+[node name="CloudsRefit2" type="Sprite2D" parent="Clouds"]
+position = Vector2(1065, 360)
+scale = Vector2(0.664009, 0.664009)
+texture = ExtResource("3_en7aa")
+
+[node name="CloudsRefit2" type="Sprite2D" parent="Clouds/CloudsRefit2"]
+position = Vector2(1118.96, -75.3003)
+scale = Vector2(1.09971, 1.09971)
+texture = ExtResource("3_en7aa")
+
+[node name="Mountains" type="ParallaxLayer" parent="."]
+
+[node name="Mountains2" type="Sprite2D" parent="."]
+position = Vector2(513, 209)
+texture = ExtResource("4_2p0ag")
+
+[node name="Mountains2" type="Sprite2D" parent="Mountains2"]
+position = Vector2(2038, -1)
+texture = ExtResource("4_2p0ag")
+
+[node name="Mountains3" type="Sprite2D" parent="Mountains2"]
+position = Vector2(3051, -1)
+texture = ExtResource("4_2p0ag")
+
+[node name="Mountains3" type="Sprite2D" parent="."]
+position = Vector2(1529, 209)
+texture = ExtResource("4_2p0ag")

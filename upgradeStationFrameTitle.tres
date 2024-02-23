@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://j0us2wfpufq2"]
+
+[sub_resource type="SystemFont" id="SystemFont_xbpim"]
+font_names = PackedStringArray("Mongolian Baiti")
+font_weight = 500
+
+[resource]
+font = SubResource("SystemFont_xbpim")
+font_size = 25
+font_color = Color(0, 0, 0, 1)

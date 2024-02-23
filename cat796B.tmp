@@ -1,0 +1,100 @@
+[gd_scene load_steps=11 format=3 uid="uid://cevu0ipdrtd22"]
+
+[ext_resource type="Script" path="res://Cat.gd" id="1_a523t"]
+[ext_resource type="Texture2D" uid="uid://c2umh7uryqgdi" path="res://assets/cats/orange_run1.png" id="2_t2274"]
+[ext_resource type="Texture2D" uid="uid://xd52n1hkmtbf" path="res://assets/cats/black_run1.png" id="2_u6aj6"]
+[ext_resource type="Texture2D" uid="uid://bybd4wi0q0y7s" path="res://assets/cats/pixelbuildings128-v1-raw-_00020_.png" id="4_yieec"]
+[ext_resource type="Texture2D" uid="uid://bqjexvoggv2i0" path="res://assets/cats/pixelbuildings128-v1-raw-_00023_.png" id="5_s7g31"]
+[ext_resource type="Texture2D" uid="uid://du7emg4n1bt0k" path="res://assets/cats/pixelbuildings128-v1-raw-_00028_.png" id="6_oqykw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a5njc"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_t2274")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_u6aj6")
+}],
+"loop": true,
+"name": &"move_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_yieec")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_s7g31")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_oqykw")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jyp18"]
+radius = 27.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_luq22"]
+size = Vector2(14, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h3r01"]
+size = Vector2(27, 19.5)
+
+[node name="Cat" type="CharacterBody2D"]
+z_index = 1
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_a523t")
+speed = null
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.19209e-07, -1.19209e-07)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_a5njc")
+animation = &"walk"
+frame_progress = 0.843289
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Attacksurface" type="Area2D" parent="."]
+visible = false
+
+[node name="CatDetectionArea" type="CollisionShape2D" parent="Attacksurface"]
+z_index = 1
+shape = SubResource("CircleShape2D_jyp18")
+
+[node name="HitboxHead" type="CollisionShape2D" parent="."]
+visible = false
+light_mask = 3
+visibility_layer = 3
+z_index = 1
+position = Vector2(-14, -8)
+shape = SubResource("RectangleShape2D_luq22")
+
+[node name="HitboxBody" type="CollisionShape2D" parent="."]
+visible = false
+light_mask = 3
+visibility_layer = 3
+z_index = 1
+position = Vector2(2, 6)
+shape = SubResource("RectangleShape2D_h3r01")
+
+[node name="InvincibleTimer" type="Timer" parent="."]
+
+[node name="AttackCooldownTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Attacksurface" to="." method="_on_attacksurface_body_entered"]
+[connection signal="body_exited" from="Attacksurface" to="." method="_on_attacksurface_body_exited"]
+[connection signal="timeout" from="InvincibleTimer" to="." method="_on_invincible_timer_timeout"]
+[connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_attack_cooldown_timer_timeout"]

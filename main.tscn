@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://cg8amqe3eu7rf"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_s46nk"]
+[ext_resource type="PackedScene" uid="uid://if1m7b0ycyf8" path="res://hud.tscn" id="2_lv7f2"]
+[ext_resource type="PackedScene" uid="uid://dlv5jefm4l7bk" path="res://world.tscn" id="3_1uctc"]
+[ext_resource type="PackedScene" uid="uid://cevu0ipdrtd22" path="res://cat.tscn" id="4_ey3wn"]
+[ext_resource type="PackedScene" uid="uid://c726l76pt4dut" path="res://enemy.tscn" id="4_lp5rt"]
+[ext_resource type="PackedScene" uid="uid://tc3y3rliegfx" path="res://PowerUpStation.tscn" id="4_o4nd4"]
+[ext_resource type="AudioStream" uid="uid://c3i28g66e3r8b" path="res://assets/sounds/timer.wav" id="7_xrup6"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_s46nk")
+
+[node name="HUD" parent="." instance=ExtResource("2_lv7f2")]
+z_index = -1
+
+[node name="StartPosition" type="Marker2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(320, 608)
+
+[node name="world" parent="." instance=ExtResource("3_1uctc")]
+
+[node name="Cat" parent="world" instance=ExtResource("4_ey3wn")]
+
+[node name="enemy" parent="." instance=ExtResource("4_lp5rt")]
+
+[node name="PowerUpStation" parent="." instance=ExtResource("4_o4nd4")]
+
+[node name="RoundStart" type="Timer" parent="."]
+one_shot = true
+
+[node name="CountDownSoundTimer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayerCountDownSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_xrup6")
+
+[connection signal="timeout" from="RoundStart" to="." method="_on_round_start_timeout"]
+[connection signal="timeout" from="CountDownSoundTimer" to="." method="_on_count_down_sound_timer_timeout"]

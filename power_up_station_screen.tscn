@@ -1,0 +1,145 @@
+[gd_scene load_steps=3 format=3 uid="uid://chkfr3luk8vjy"]
+
+[ext_resource type="Script" path="res://power_up_station_screen.gd" id="1_0mdkj"]
+[ext_resource type="PackedScene" uid="uid://if1m7b0ycyf8" path="res://hud.tscn" id="2_bsde8"]
+
+[node name="PowerUpStationScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0mdkj")
+
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -299.0
+offset_top = -300.0
+offset_right = 299.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ShopControl" type="MarginContainer" parent="MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer3/ShopControl"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Buy" type="Button" parent="MarginContainer3/ShopControl/VBoxContainer"]
+layout_mode = 2
+text = "Buy"
+
+[node name="ExitShop" type="Button" parent="MarginContainer3/ShopControl/VBoxContainer"]
+layout_mode = 2
+text = "Exit Shop"
+
+[node name="PowerUps" type="MarginContainer" parent="MarginContainer3"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer3/PowerUps"]
+layout_mode = 2
+
+[node name="HealthDropProbabilityBox" type="VBoxContainer" parent="MarginContainer3/PowerUps/HBoxContainer"]
+layout_mode = 2
+
+[node name="HealthdropProbabilityUpgrade" type="Button" parent="MarginContainer3/PowerUps/HBoxContainer/HealthDropProbabilityBox"]
+layout_mode = 2
+text = "Health Drop Probability
++ 1%"
+
+[node name="HealthDropProbabilityCost" type="Label" parent="MarginContainer3/PowerUps/HBoxContainer/HealthDropProbabilityBox"]
+layout_mode = 2
+
+[node name="CurrentHealthDropProbability" type="Label" parent="MarginContainer3/PowerUps/HBoxContainer/HealthDropProbabilityBox"]
+layout_mode = 2
+
+[node name="HealthDropAmountBox" type="VBoxContainer" parent="MarginContainer3/PowerUps/HBoxContainer"]
+layout_mode = 2
+
+[node name="HealthDropAmountUpgrade" type="Button" parent="MarginContainer3/PowerUps/HBoxContainer/HealthDropAmountBox"]
+layout_mode = 2
+text = "Healthdrop Capacity
++1"
+
+[node name="HealthdropAmountCost" type="Label" parent="MarginContainer3/PowerUps/HBoxContainer/HealthDropAmountBox"]
+layout_mode = 2
+
+[node name="CurrentHealthDropAmount" type="Label" parent="MarginContainer3/PowerUps/HBoxContainer/HealthDropAmountBox"]
+layout_mode = 2
+
+[node name="MovingSpeedBox" type="VBoxContainer" parent="MarginContainer3/PowerUps/HBoxContainer"]
+layout_mode = 2
+
+[node name="MovingSpeedUpgrade" type="Button" parent="MarginContainer3/PowerUps/HBoxContainer/MovingSpeedBox"]
+layout_mode = 2
+text = "Movement Speed
++5"
+
+[node name="MovingSpeedCost" type="Label" parent="MarginContainer3/PowerUps/HBoxContainer/MovingSpeedBox"]
+layout_mode = 2
+
+[node name="CurrentMovingSpeed" type="Label" parent="MarginContainer3/PowerUps/HBoxContainer/MovingSpeedBox"]
+layout_mode = 2
+
+[node name="AttackSpeedBox" type="VBoxContainer" parent="MarginContainer3/PowerUps/HBoxContainer"]
+layout_mode = 2
+
+[node name="AttackSpeedUpgrade" type="Button" parent="MarginContainer3/PowerUps/HBoxContainer/AttackSpeedBox"]
+layout_mode = 2
+text = "Attack Speed
++1"
+
+[node name="AttackSpeedCost" type="Label" parent="MarginContainer3/PowerUps/HBoxContainer/AttackSpeedBox"]
+layout_mode = 2
+
+[node name="CurrentAttackSpeed" type="Label" parent="MarginContainer3/PowerUps/HBoxContainer/AttackSpeedBox"]
+layout_mode = 2
+
+[node name="AttackDamageBox" type="VBoxContainer" parent="MarginContainer3/PowerUps/HBoxContainer"]
+layout_mode = 2
+
+[node name="AttackDamageUpgrade" type="Button" parent="MarginContainer3/PowerUps/HBoxContainer/AttackDamageBox"]
+layout_mode = 2
+text = "Attack Damage
++5
+"
+
+[node name="AttackDamageCost" type="Label" parent="MarginContainer3/PowerUps/HBoxContainer/AttackDamageBox"]
+layout_mode = 2
+
+[node name="CurrentAttackDamage" type="Label" parent="MarginContainer3/PowerUps/HBoxContainer/AttackDamageBox"]
+layout_mode = 2
+
+[node name="MaxHealthBox" type="VBoxContainer" parent="MarginContainer3/PowerUps/HBoxContainer"]
+layout_mode = 2
+
+[node name="MaxHealthUpgrade" type="Button" parent="MarginContainer3/PowerUps/HBoxContainer/MaxHealthBox"]
+layout_mode = 2
+text = "Max Health
++10"
+
+[node name="MaxHealthCost" type="Label" parent="MarginContainer3/PowerUps/HBoxContainer/MaxHealthBox"]
+layout_mode = 2
+
+[node name="CurrentMaxHealth" type="Label" parent="MarginContainer3/PowerUps/HBoxContainer/MaxHealthBox"]
+layout_mode = 2
+
+[node name="HUD" parent="." instance=ExtResource("2_bsde8")]
+
+[connection signal="pressed" from="MarginContainer3/ShopControl/VBoxContainer/ExitShop" to="." method="_on_exit_shop_pressed"]
+[connection signal="pressed" from="MarginContainer3/PowerUps/HBoxContainer/HealthDropProbabilityBox/HealthdropProbabilityUpgrade" to="." method="_on_healthdrop_probability_upgrade_pressed"]
+[connection signal="pressed" from="MarginContainer3/PowerUps/HBoxContainer/HealthDropAmountBox/HealthDropAmountUpgrade" to="." method="_on_health_drop_amount_upgrade_pressed"]
+[connection signal="pressed" from="MarginContainer3/PowerUps/HBoxContainer/MovingSpeedBox/MovingSpeedUpgrade" to="." method="_on_moving_speed_upgrade_pressed"]
+[connection signal="pressed" from="MarginContainer3/PowerUps/HBoxContainer/AttackSpeedBox/AttackSpeedUpgrade" to="." method="_on_attack_speed_upgrade_pressed"]
+[connection signal="pressed" from="MarginContainer3/PowerUps/HBoxContainer/AttackDamageBox/AttackDamageUpgrade" to="." method="_on_attack_damage_upgrade_pressed"]
+[connection signal="pressed" from="MarginContainer3/PowerUps/HBoxContainer/MaxHealthBox/MaxHealthUpgrade" to="." method="_on_max_health_upgrade_pressed"]

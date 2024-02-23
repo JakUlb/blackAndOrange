@@ -1,0 +1,11 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://c5w2c0m05m6pk"]
+
+[sub_resource type="SystemFont" id="SystemFont_qtrpp"]
+font_names = PackedStringArray("Mongolian Baiti")
+
+[resource]
+font = SubResource("SystemFont_qtrpp")
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
