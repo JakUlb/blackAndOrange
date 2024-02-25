@@ -790,7 +790,7 @@ animationPlayer = NodePath("AnimationPlayer")
 [node name="Camera2D" type="Camera2D" parent="."]
 z_index = 1
 y_sort_enabled = true
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(1.75, 1.75)
 limit_left = -63
 limit_top = -111
 limit_right = 1983

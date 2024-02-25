@@ -34,9 +34,9 @@ func spawn_cat():
 	var instance = selectedCat.instantiate()
 	if Global.chosen_cat==0:
 #(health, speed, attackCooldown,attackDamage,knockBackPower)
-		instance.initialize(130,300,1,100,70)
+		instance.initialize(130,200,1,100,70)
 	else:
-		instance.initialize(100,500,0.25,30,40)
+		instance.initialize(100,300,0.25,30,40)
 	var worldNode = $world
 	var baseCat = $world/Cat
 	worldNode.remove_child(baseCat)
@@ -49,7 +49,6 @@ func spawn_enemy():
 	var i = 0
 	while i <= spawnAmount:
 		var enemy = enemyScene.instantiate()
-		#enemy.position = Vector2(randf_range(0,1920),randf_range(0,720))
 		enemy.position = Vector2(947,-66)
 		add_child(enemy)
 		i+=1

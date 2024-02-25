@@ -100,6 +100,7 @@ offset_left = 108.0
 offset_top = -340.0
 offset_right = 408.0
 offset_bottom = -40.0
+joystick_mode = 2
 
 [node name="AudioStreamPlayerStartSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_wb5ow")

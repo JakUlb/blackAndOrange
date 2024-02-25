@@ -32,5 +32,6 @@ func resetGlobal():
 	Global.killCounter= 0
 	Global.waveCounter= 1
 	Global.showWaveBanner=true
+	Global.roundStarted = false
 	
 	
