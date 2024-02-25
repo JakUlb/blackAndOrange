@@ -838,19 +838,19 @@ animationPlayer = NodePath("AnimationPlayer2")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_ihirq")
-animation = &"move_side"
-frame = 2
-frame_progress = 0.00609979
+animation = &"move_up"
+frame = 0
+frame_progress = 0.0
 
 [node name="CatDetectionArea" parent="Attacksurface" index="0"]
 shape = SubResource("CapsuleShape2D_f3i2g")
 
 [node name="Claws" parent="." index="5"]
-visible = true
 position = Vector2(-41, -8)
 rotation = 3.09392
 
 [node name="LightOccluder2D" parent="Sprite2D" index="0"]
+visible = true
 occluder = SubResource("OccluderPolygon2D_4lw58")
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="." index="9"]
