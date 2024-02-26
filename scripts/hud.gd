@@ -22,6 +22,7 @@ func _process(delta):
 	if Global.showWaveBanner:
 		if playStartSound:
 			$AudioStreamPlayerStartSound.play()
+			playStartSound=false
 		waveBanner_font_size+=5
 		$CanvasLayer/WaveBanner.text = format_string_waveBanner % ["WAVE",Global.waveCounter]
 		$CanvasLayer/WaveBanner.visible=true
@@ -50,8 +51,3 @@ func update_wavecounter():
 func show_waveBanner():
 	waveBanner_font_size+=5
 	$CanvasLayer/WaveBanner.add_theme_font_size_override("font_size",waveBanner_font_size)
-	
-
-
-func _on_audio_stream_player_start_sound_finished():
-	playStartSound=false

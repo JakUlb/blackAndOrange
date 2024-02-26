@@ -17,7 +17,7 @@ var killCounter : int = 0
 var waveCounter : int = 1
 var showWaveBanner : bool 
 var roundStarted : bool = false
-
+var powerUpStationInitialSound : bool = true
 var shopOpen=false
 var maxHealthUpgrades : int = 1
 var healthDropProbabilityUpgrades : int = 1

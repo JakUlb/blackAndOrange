@@ -92,6 +92,7 @@ func _on_exit_shop_pressed():
 	Global.cat_attacking=false
 	Global.shopOpen=false
 	Global.wave_cleared=false
+	Global.powerUpStationInitialSound=true
 	Global.health+=20
 	$ClickSound.play()
 	get_tree().change_scene_to_file("res://main.tscn")
