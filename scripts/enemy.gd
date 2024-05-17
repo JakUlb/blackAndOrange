@@ -48,7 +48,7 @@ func _on_fov_body_exited(body):
 
 
 func dropItem():
-	if randi_range(0,100) < Global.healthDropProbability:
+	if randi_range(0,100) < Global.healthDropProbability and Global.health + Global.healthDropAmount <= Global.max_health:
 		var health_drop = health_drop_scene.instantiate()
 		health_drop.position=(self.position)
 		get_parent().add_child(health_drop)

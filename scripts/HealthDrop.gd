@@ -16,6 +16,6 @@ func healthDrop():
 
 
 func _on_area_2d_body_entered(body):
-	if Global.health+Global.healthDropAmount <= Global.max_health:
+	if Global.health+Global.healthDropAmount <= Global.max_health and body.has_method("cat"):
 		Global.health += Global.healthDropAmount
 		self.queue_free()

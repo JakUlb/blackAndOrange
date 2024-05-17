@@ -93,7 +93,8 @@ func _on_exit_shop_pressed():
 	Global.shopOpen=false
 	Global.wave_cleared=false
 	Global.powerUpStationInitialSound=true
-	Global.health+=20
+	if Global.health + 20 <= Global.max_health:
+		Global.health+=20
 	$ClickSound.play()
 	get_tree().change_scene_to_file("res://main.tscn")
 
@@ -109,7 +110,7 @@ func updateMaxHealthUI():
 	if canNotAfford(maxHealthCost):
 		$MarginContainer/VBoxContainer/HBoxContainer2/MaxHealthFrame/MaxHealthButton.disabled=true
 	$MarginContainer/VBoxContainer/HBoxContainer2/MaxHealthFrame/MarginContainer/VBoxContainer/UpgradeAmount.text = "Increase +%s" %upgradeBoost
-	$MarginContainer/VBoxContainer/HBoxContainer2/MaxHealthFrame/MarginContainer/VBoxContainer/UpgradeCost.text = "Cost: %s" %maxHealthCost
+	$MarginContainer/VBoxContainer/HBoxContainer2/MaxHealthFrame/MarginContainer/VBoxContainer/UpgradeCost.text = "Cost: -%s Health" %maxHealthCost
 	$MarginContainer/VBoxContainer/HBoxContainer2/MaxHealthFrame/MarginContainer/VBoxContainer/CurrentValue.text = "Current: %s" %Global.max_health
 	
 func updateHealthDropProbabilityUI():
@@ -121,7 +122,7 @@ func updateHealthDropProbabilityUI():
 		if canNotAfford(healthDropProbabilityCost):
 			$MarginContainer/VBoxContainer/HBoxContainer/LuckFrame/LuckButton.disabled=true
 		$MarginContainer/VBoxContainer/HBoxContainer/LuckFrame/MarginContainer/VBoxContainer/UpgradeAmount.text = "Increase: +%s%%" %upgradeBoost
-		$MarginContainer/VBoxContainer/HBoxContainer/LuckFrame/MarginContainer/VBoxContainer/UpgradeCost.text = "Cost: %s" %healthDropProbabilityCost
+		$MarginContainer/VBoxContainer/HBoxContainer/LuckFrame/MarginContainer/VBoxContainer/UpgradeCost.text = "Cost: -%s Health" %healthDropProbabilityCost
 		$MarginContainer/VBoxContainer/HBoxContainer/LuckFrame/MarginContainer/VBoxContainer/CurrentValue.text = "Current: %s%%" %currentProbability
 	else:
 		$MarginContainer/VBoxContainer/HBoxContainer/LuckFrame/LuckButton.disabled=true
@@ -135,7 +136,7 @@ func updateHealthDropAmountUI():
 	if canNotAfford(healthDropAmountCost):
 		$MarginContainer/VBoxContainer/HBoxContainer/RegenerationFrame/RegenerationButton.disabled=true
 	$MarginContainer/VBoxContainer/HBoxContainer/RegenerationFrame/MarginContainer/VBoxContainer/UpgradeAmount.text = "Increase: +%s" %upgradeBoost
-	$MarginContainer/VBoxContainer/HBoxContainer/RegenerationFrame/MarginContainer/VBoxContainer/UpgradeCost.text = "Cost: %s" %healthDropAmountCost
+	$MarginContainer/VBoxContainer/HBoxContainer/RegenerationFrame/MarginContainer/VBoxContainer/UpgradeCost.text = "Cost: -%s Health" %healthDropAmountCost
 	$MarginContainer/VBoxContainer/HBoxContainer/RegenerationFrame/MarginContainer/VBoxContainer/CurrentValue.text = "Current: %s" %Global.healthDropAmount
 	
 func updateMovingSpeedUI():
@@ -144,7 +145,7 @@ func updateMovingSpeedUI():
 	if canNotAfford(movingSpeedCost):
 		$MarginContainer/VBoxContainer/HBoxContainer/MovementFrame/MovementButton.disabled=true
 	$MarginContainer/VBoxContainer/HBoxContainer/MovementFrame/MarginContainer/VBoxContainer/UpgradeAmount.text = "Increase: + %s" %upgradeBoost
-	$MarginContainer/VBoxContainer/HBoxContainer/MovementFrame/MarginContainer/VBoxContainer/UpgradeCost.text = "Cost: %s" %movingSpeedCost
+	$MarginContainer/VBoxContainer/HBoxContainer/MovementFrame/MarginContainer/VBoxContainer/UpgradeCost.text = "Cost: -%s Health" %movingSpeedCost
 	$MarginContainer/VBoxContainer/HBoxContainer/MovementFrame/MarginContainer/VBoxContainer/CurrentValue.text = "Current: %s" %Global.speed
 	
 func updateAttackSpeedUI():
@@ -154,7 +155,7 @@ func updateAttackSpeedUI():
 	if canNotAfford(attackSpeedCost) or Global.attackCooldown <= 0.2:
 		$MarginContainer/VBoxContainer/HBoxContainer2/AttackSpeedFrame/AttackSpeedButton.disabled=true
 	$MarginContainer/VBoxContainer/HBoxContainer2/AttackSpeedFrame/MarginContainer/VBoxContainer/UpgradeAmount.text = "Increase + %s" %upgradeBoost
-	$MarginContainer/VBoxContainer/HBoxContainer2/AttackSpeedFrame/MarginContainer/VBoxContainer/UpgradeCost.text = "Cost: %s" %attackSpeedCost
+	$MarginContainer/VBoxContainer/HBoxContainer2/AttackSpeedFrame/MarginContainer/VBoxContainer/UpgradeCost.text = "Cost: -%s Health" %attackSpeedCost
 	$MarginContainer/VBoxContainer/HBoxContainer2/AttackSpeedFrame/MarginContainer/VBoxContainer/CurrentValue.text = "Current: %s/sec" %attackSpeedUIvalue
 
 func updateAttackDamageUI():
@@ -163,7 +164,7 @@ func updateAttackDamageUI():
 	if canNotAfford(attackDamageCost):
 		$MarginContainer/VBoxContainer/HBoxContainer2/DamageFrame/DamageButton.disabled=true
 	$MarginContainer/VBoxContainer/HBoxContainer2/DamageFrame/MarginContainer/VBoxContainer/UpgradeAmount.text = "Increase + %s" %upgradeBoost
-	$MarginContainer/VBoxContainer/HBoxContainer2/DamageFrame/MarginContainer/VBoxContainer/UpgradeCost.text = "Cost: %s" %attackDamageCost
+	$MarginContainer/VBoxContainer/HBoxContainer2/DamageFrame/MarginContainer/VBoxContainer/UpgradeCost.text = "Cost: -%s Health" %attackDamageCost
 	$MarginContainer/VBoxContainer/HBoxContainer2/DamageFrame/MarginContainer/VBoxContainer/CurrentValue.text = "Current: %s" %Global.cat_attack_damage
 
 func changeLabelVisibility(labelPath):
